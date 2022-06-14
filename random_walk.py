@@ -17,13 +17,8 @@ class RandomWalk:
         while len(self.x_values)<self.num_points:
             #Hangi yöne gidileceğine ve bu yönde ne kadar uzağa gidileceğine
             #karar ver.
-            x_direction=choice([1,-1])
-            x_distance=choice([0,1,2,3,4])
-            x_step=x_direction*x_distance
-
-            y_direction=choice([1,-1])
-            y_distance=choice([0,1,2,3,4])
-            y_step=y_direction*y_distance
+            x_step=self.get_step()
+            y_step=self.get_step()
 
             #Hiçbir yere gitmeyen hareketleri redded.
             if x_step==0 and y_step==0:
@@ -34,5 +29,11 @@ class RandomWalk:
 
             self.x_values.append(x)
             self.y_values.append(y)
+
+    def get_step(self):
+        direction=choice([1,-1])
+        distance=choice([0,1,2,3,4])
+        step=direction*distance
+        return step
 
         
